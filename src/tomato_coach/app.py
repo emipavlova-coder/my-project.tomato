@@ -180,3 +180,6 @@ def _error(key: str, lang: str, **ctx):
 
 # Module-level app so `flask --app tomato_coach.app run` works out of the box.
 app = create_app()
+if __name__ == "__main__":
+    app.run(debug=True)
+
