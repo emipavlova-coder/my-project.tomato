@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🍅 Tomato Coach</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div class="lang-switch" id="lang-switch">
+        <button type="button" class="lang-btn is-active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="bg">BG</button>
+      </div>
+      <h1>🍅 Tomato Coach</h1>
+      <p class="tagline" data-i18n="tagline">Organic tomato growing advice for your backyard — pick your region and sowing date.</p>
+    </header>
+
+    <form id="advice-form" class="card form">
+      <div class="field">
+        <label for="region" data-i18n="regionLabel">Your region</label>
+        <select id="region" name="region" required>
+          <option value="" disabled selected>Loading regions…</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="planting-date" data-i18n="sowingLabel">Sowing date</label>
+        <input type="date" id="planting-date" name="planting_date" required>
+      </div>
+      <div class="field">
+        <label for="today">
+          <span data-i18n="todayLabel">Pretend today is</span>
+          <span class="muted" data-i18n="todayHint">(optional — for trying different stages)</span>
+        </label>
+        <input type="date" id="today" name="today">
+      </div>
+      <button type="submit" class="btn" data-i18n="submit">Get advice</button>
+    </form>
+
+    <p id="error" class="error" role="alert" hidden></p>
+
+    <section id="results" class="results" hidden>
+      <div id="region-note" class="card region-note"></div>
+      <div id="recommended" class="card"></div>
+      <div id="current" class="card current"></div>
+      <div id="timeline" class="card timeline"></div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
